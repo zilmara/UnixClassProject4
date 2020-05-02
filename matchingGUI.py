@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#py matchingGUI.py
+
 import os
 import pygame
 import pyglet
@@ -8,7 +8,6 @@ import tkinter
 import tkinter.messagebox
 import tkinter.font
 import tkinter.ttk
-from string import Template
 from tkinter.ttk import Frame, Button, Style
 from random import randrange
 from gtts import gTTS
@@ -18,61 +17,41 @@ randomNumber = 0
 
 def doneCallBack():
     tkinter.messagebox.showinfo( "Matching Game", "GOOD JOB!!!")
-    return 0;
+    exit()
 
 def pressedOne():
-    global one
-    one = True
     randomNumbers(1)
 
 def pressedTwo():
-    global two
-    two = True
     randomNumbers(2)
 
 def pressedThree():
-    global three
-    three = True
     randomNumbers(3)
 	
 def pressedFour():
-    global four
-    four = True
     randomNumbers(4)
 
 def pressedFive():
-    global five
-    five = True
     randomNumbers(5)
 
 def pressedSix():
-    global six
-    six = True
     randomNumbers(6)	
 
 def pressedSeven():
-    global seven
-    seven = True
     randomNumbers(7)
 	
 def pressedEight():
-    global eight
-    eight = True
     randomNumbers(8)
 	
 def pressedNine():
-    global nine
-    nine = True
     randomNumbers(9)
 	
 def pressedTen():
-    global ten
-    ten = True
     randomNumbers(10)	
 	
 def checkCorrectness(numberPressed, randomNumber):
     
-    language = 'en'
+    language = 'en-za'
     
     if (numberPressed == randomNumber):
         myText = "Correct!"
@@ -115,7 +94,7 @@ def wordNum(randomNumber):
 	
 def startNumbers():
 
-    language = 'en'
+    language = 'en-za'
 	#Start with first random number
     global randomNumber
     randomNumber = randrange(1,11)
@@ -136,7 +115,7 @@ def randomNumbers(numberPressed):
     global randomNumber
     checkCorrectness(numberPressed, randomNumber)
 
-    language = 'en'
+    language = 'en-za'
     randomNumber = randrange(1,11)
     if (randomNumber == 1):
         myText = "one"
