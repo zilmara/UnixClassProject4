@@ -9,18 +9,32 @@ Install before running
 
 Python libraries needed
 
+**Windows**
+
     pip install pygame
     pip install pyglet
     pip install random
     pip install tkinter
     pip install gtts
+**Linux**
 
+    pip install pyttsx3
+    pip install random
+    pip install tkinter
+    
 Run Programm
 ------------
 
 After clonning this project, it can be started with the following commands:
+
+**Windows**
 ```
-$py -m matchingGui
+$py matchingGui.py
+```
+
+**Linux**
+```
+$python matchingGui_Linux.py
 ```
 A pop up window will appear. Press start to start and click on the number that is spoken until a pop up window pops up. **Make sure the speaker is on and the volume is up.**
 
