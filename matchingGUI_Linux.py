@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
 import os
-import pygame
-import pyglet
 import random
 import tkinter
 import tkinter.messagebox
@@ -10,10 +8,12 @@ import tkinter.font
 import tkinter.ttk
 from tkinter.ttk import Frame, Button, Style
 from random import randrange
-from gtts import gTTS
+import pyttsx3
+
 
 count = 0
 randomNumber = 0
+engine = pyttsx3.init()
 
 def doneCallBack():
     tkinter.messagebox.showinfo( "Matching Game", "GOOD JOB!!!")
@@ -60,13 +60,8 @@ def checkCorrectness(numberPressed, randomNumber):
     else:
         myText = "Incorrect!"
 		
-    myobj = gTTS(text=myText, lang=language, slow=False) 
-      
-    myobj.save(myText + ".ogg") 
-
-    pygame.mixer.init()
-    pygame.mixer.music.load(myText + ".ogg")
-    pygame.mixer.music.play()
+    engine.say(myText)
+    engine.runAndWait()
 
 def wordNum(randomNumber):
     if (randomNumber == 1):
@@ -94,28 +89,23 @@ def wordNum(randomNumber):
 	
 def startNumbers():
 
-    language = 'en-za'
+    engine.say('Lets Begin!.')
+    engine.runAndWait()
+	
 	#Start with first random number
     global randomNumber
     randomNumber = randrange(1,11)
 	
     myText = wordNum(randomNumber)
-		
-    myobj = gTTS(text=myText, lang=language, slow=False) 
       
-    # Saving the converted audio in a mp3 file named 
-    myobj.save(myText + ".ogg") 
-    #read first random number
-    pygame.mixer.init()
-    pygame.mixer.music.load(myText+ ".ogg")
-    pygame.mixer.music.play()	
+    engine.say(myText)
+    engine.runAndWait()
 	
 def randomNumbers(numberPressed):
     
     global randomNumber
     checkCorrectness(numberPressed, randomNumber)
 
-    language = 'en-za'
     randomNumber = randrange(1,11)
     if (randomNumber == 1):
         myText = "one"
@@ -141,14 +131,8 @@ def randomNumbers(numberPressed):
     if (count == 20):
         doneCallBack()
     else:
-        myobj = gTTS(text=myText, lang=language, slow=False) 
-        filename = myText + ".ogg"
-
-        myobj.save(filename) 
-	
-        pygame.mixer.init()
-        pygame.mixer.music.load(filename)
-        pygame.mixer.music.play()
+        engine.say(myText)
+        engine.runAndWait()
 
 def main():
 
@@ -224,7 +208,7 @@ def main():
 	#Start button
     tkinter.Button(root, text = 'Let\'s Begin!', command=startNumbers, 
 					image = startPhoto).place(x=440, y=330)	
-					
+			
     root.wm_title("Matching Numbers")
     root.geometry("1000x750")
     root.mainloop()
